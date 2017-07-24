@@ -10,8 +10,9 @@ app.get('/', function (req, res) {
 
 app.get('/campgrounds', function(){
     var campgrounds = [
-        {name: "Salmon Creek", image: ""}
-        {name: "Granite Hill", image: ""}
+        {name: "Salmon Creek", image: "http://www.photosforclass.com/download/7626464792"},
+        {name: "Granite Hill", image: ""},
+        {name: "Mountain Goat's Rest", image: ""}
     ]
 })
 
