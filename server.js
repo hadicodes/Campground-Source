@@ -14,7 +14,9 @@ app.get('/campgrounds', function(){
         {name: "Granite Hill", image: "https://farm4.staticflickr.com/3872/14435096036_39db8f04bc.jpg"},
         {name: "Mountain Goat's Rest", image: "http://www.photosforclass.com/download/5641024448"}
     ]
-})
+});
+
+res.render('campgrounds');
 
 
 app.listen(process.env.PORT || 8080, function () {
