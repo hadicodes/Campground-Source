@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
+// middleware
 app.set("view engine", "ejs");
 
 app.get('/', function (req, res) {
@@ -14,14 +15,14 @@ app.get('/campgrounds', function(req, res){
         {name: "Granite Hill", image: "https://farm4.staticflickr.com/3872/14435096036_39db8f04bc.jpg"},
         {name: "Mountain Goat's Rest", image: "http://www.photosforclass.com/download/5641024448"}
     ]
-res.render('campgrounds');
+res.render('campgrounds', {campgrounds: campgrounds} );
 });
 
 
 
 
 app.listen(process.env.PORT || 8080, function () {
-    console.log('NICE! YELPCAMP SERVER has startedon PORT 8080.');
+    console.log('SUCCESS! visit PORT 8080');
 });
 
 
