@@ -21,6 +21,14 @@ app.get('/campgrounds', function(req, res){
 res.render('campgrounds', {campgrounds: campgrounds} );
 });
 
+// 
+app.get('/campgrounds/new', function(req, res){
+    res.send(new.ejs);
+});
+
+
+
+
 // Create a new  campground
 app.post('/campgrounds', function(req, res){
     res.send('you hit post route');
