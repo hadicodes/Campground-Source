@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 
 // middleware
+app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 // Landing page route
