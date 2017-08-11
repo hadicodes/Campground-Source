@@ -21,22 +21,26 @@ app.get('/campgrounds', function(req, res){
 res.render('campgrounds', {campgrounds: campgrounds} );
 });
 
-// 
+
+// Show new campground form
 app.get('/campgrounds/new', function(req, res){
-    res.send(new.ejs);
+    res.render('new.ejs');
 });
-
-
-
 
 // Create a new  campground
 app.post('/campgrounds', function(req, res){
-    res.send('you hit post route');
+    res.send('you hit da post route');
     // get data from form and redirect to campgrounds array
-
-
     // redirect back to campgrounds page
 });
+
+
+
+
+
+
+
+
 
 
 
