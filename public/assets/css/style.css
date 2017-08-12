@@ -32,3 +32,9 @@ nav.navbar.navbar-default {
     background-color: #E8918E;
     border-color: none !important;
 }
+
+/* CAMPGROUNDS PAGE */
+.campgrounds-row{
+    display: flex;
+    flex-wrap: wrap;
+}
