@@ -3,10 +3,19 @@ const app = express();
 const bodyParser = require("body-parser");
 
 // middleware
+// Use body-parser
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+// use ejs as the view templating engine
 app.set("view engine", "ejs");
+// serve static files from public directory
+app.use(express.static(process.cwd() + '/public'));
+
+
+// *************************************
+// ROUTES
+// *************************************
 
 // Landing page route
 app.get('/', function (req, res) {

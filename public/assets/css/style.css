@@ -1,0 +1,34 @@
+/* navbar BG color */
+nav.navbar.navbar-default {
+    /* background: linear-gradient(to left , #804CCD, #4B1D8D) !important;     */
+    background-color: #3E327C !important;
+}
+
+/* navbar */
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+/* navbar brand hover color  */
+.navbar-default .navbar-brand:hover {
+        text-decoration: underline;
+        color: white;
+}
+
+/* navbar links color  */
+.navbar-default .navbar-nav>li>a{
+    color: white;
+}
+/* navbar links hover color  */
+.navbar-default .navbar-nav>li>a:hover{
+    text-decoration: underline;
+    color: white;
+}
+
+.jumbotron{
+    background-color: #F2F6FA;
+}
+
+.btn-primary .jumbo{
+    background-color: #E8918E;
+    border-color: none !important;
+}

@@ -3,10 +3,15 @@
 
     <div class="container">
         <header class="jumbotron">
-            <h1>This is the campgrounds page</h1>
+            <div class="container">
+                <h1>Welcome to Campground Source</h1>
+                <p>View our hand-picked campgrounds from all over the world!</p>
+                <p>
+                    <a class="btn btn-primary btn-lrg jumbo" href="/campgrounds/new">Add a new campground</a>
+                </p>
+            </div>
         </header>
 
-        <a href="/campgrounds/new">Add a new campground</a>
         <%  campgrounds.forEach(function(campground){ %>
             <div>
                 <h4>
@@ -16,4 +21,4 @@
             </div>
             <%  }) %>
     </div>
-<% include partials/footer %>
+    <% include partials/footer %>
