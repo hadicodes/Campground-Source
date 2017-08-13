@@ -38,3 +38,10 @@ nav.navbar.navbar-default {
     display: flex;
     flex-wrap: wrap;
 }
+
+
+/* New Campgrounds Form Page */
+.form-style{
+    margin: 25px auto;
+    width: 30%;
+}
