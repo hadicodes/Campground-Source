@@ -40,7 +40,7 @@ app.get('/', function (req, res) {
     res.render('landing');
 });
 
-// Show all campgrounds
+// INDEX - Show all campgrounds
 app.get('/campgrounds', function (req, res) {
     // get all campgrounds from db
     Campground.find({}, function (err, allCampgrounds) {
@@ -54,12 +54,12 @@ app.get('/campgrounds', function (req, res) {
 
 
 
-// SHOW NEW CAMPGROUND FORM
+//NEW - SHOW NEW CAMPGROUND FORM
 app.get('/campgrounds/new', function (req, res) {
     res.render('new.ejs');
 });
 
-// Create a new  campground
+//CREATE -  Add new campground to DB
 app.post('/campgrounds', function (req, res) {
     // get data from form and redirect to campgrounds array
     let name = req.body.name;
