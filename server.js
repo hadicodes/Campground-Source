@@ -1,79 +1,60 @@
+// DEPENDENCIES
 const express = require("express"),
- app = express(),
- bodyParser = require("body-parser"),
- mongoose = require("mongoose");
+    app = express(),
+    bodyParser = require("body-parser"),
+    mongoose = require("mongoose");
 
-// mongoose connection
- mongoose.connect("mongodb://localhost/campground_source");
+// MONGOOSE CONNECTION
+mongoose.connect("mongodb://localhost/campground_source", {
+    useMongoClient: true
+});
 
-// middleware
+// MIDDLEWARE
 // Use body-parser
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-// use ejs as the view templating engine
+// USE EJS AS THE VIEW TEMPLATING ENGINE
 app.set("view engine", "ejs");
-// serve static files from public directory
+// Serve static files from public directory
 app.use(express.static(process.cwd() + '/public'));
 
 
-// *************************************
+
+// SCHEMA SETUP
+const campgroundSchema = new mongoose.Schema({
+    name: String,
+    image: String
+});
+
+const Campground = mongoose.model("Campground", campgroundSchema);
+
+
+
+// ****************************************************************************************
 // ROUTES
-// *************************************
+// ****************************************************************************************
 
 // Landing page route
 app.get('/', function (req, res) {
     res.render('landing');
-})
+});
 
-
-var campgrounds = [{
-        name: "Salmon Creek",
-        image: "http://www.photosforclass.com/download/7626464792"
-    },
-    {
-        name: "Granite Hill",
-        image: "https://farm4.staticflickr.com/3872/14435096036_39db8f04bc.jpg"
-    },
-    {
-        name: "Mountain Goat's Rest",
-        image: "http://www.photosforclass.com/download/5641024448"
-    },
-    {
-        name: "Salmon Creek",
-        image: "http://www.photosforclass.com/download/7626464792"
-    },
-    {
-        name: "Granite Hill",
-        image: "https://farm4.staticflickr.com/3872/14435096036_39db8f04bc.jpg"
-    },
-    {
-        name: "Mountain Goat's Rest",
-        image: "http://www.photosforclass.com/download/5641024448"
-    },
-    {
-        name: "Salmon Creek",
-        image: "http://www.photosforclass.com/download/7626464792"
-    },
-    {
-        name: "Granite Hill",
-        image: "https://farm4.staticflickr.com/3872/14435096036_39db8f04bc.jpg"
-    },
-    {
-        name: "Mountain Goat's Rest",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLcEp1ld68tW01I2VSGeE24EZWn1IWSXzVfRtL5txozTyIKxpbXg"
-    }
-
-]
 // Show all campgrounds
 app.get('/campgrounds', function (req, res) {
-    res.render('campgrounds', {
-        campgrounds: campgrounds
-    });
+    // get all campgrounds from db
+    Campground.find({}, function (err, allCampgrounds) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('campgrounds', { campgrounds: allCampgrounds });
+        }
+    })
 });
 
 
-// Show new campground form
+
+// SHOW NEW CAMPGROUND FORM
 app.get('/campgrounds/new', function (req, res) {
     res.render('new.ejs');
 });
@@ -87,13 +68,16 @@ app.post('/campgrounds', function (req, res) {
         name: name,
         image: image
     }
-    campgrounds.push(newCampground);
-    // redirect back to campgrounds page
-    res.redirect('/campgrounds');
+    // Create a new Campground and add it to our db
+    Campground.create(newCampground, function (err, newlyCreated) {
+        if (err) {
+            console.log(err);
+        } else {
+            // redirect back to campgrounds page
+            res.redirect('/campgrounds');
+        }
+    });
 });
-
-
-
 
 
 
