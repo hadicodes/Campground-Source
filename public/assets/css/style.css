@@ -37,6 +37,7 @@ nav.navbar.navbar-default {
 .campgrounds-row{
     display: flex;
     flex-wrap: wrap;
+    text-align: center;
 }
 
 
