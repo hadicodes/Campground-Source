@@ -24,10 +24,24 @@ app.use(express.static(process.cwd() + '/public'));
 // SCHEMA SETUP
 const campgroundSchema = new mongoose.Schema({
     name: String,
-    image: String
+    image: String,
+    descripton: String
 });
 
 const Campground = mongoose.model("Campground", campgroundSchema);
+
+// Create a new Campground and add it to our db
+// Campground.create({
+//     name: "FireSide Rock",
+//     image: "https://farm1.staticflickr.com/7/5954480_34a881115f.jpg",
+//     descripton: "This campground is known to have regular forest fires. Tread carefully, you have been Warned!"
+// }, function (err, newlyCreated) {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log("success");
+//     }
+// });
 
 
 
@@ -47,11 +61,10 @@ app.get('/campgrounds', function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render('campgrounds', { campgrounds: allCampgrounds });
+            res.render('index', { campgrounds: allCampgrounds });
         }
     })
 });
-
 
 
 //NEW - SHOW NEW CAMPGROUND FORM
@@ -79,6 +92,14 @@ app.post('/campgrounds', function (req, res) {
     });
 });
 
+
+// SHOW - Show a more detailed description of a specified route (by :id
+app.get("/campgrounds/:id",function(req, res){
+    // find the campground with a provided id
+
+    // render the show page for that campground
+    res.send(show);
+});
 
 
 
