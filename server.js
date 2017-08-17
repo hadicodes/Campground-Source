@@ -76,12 +76,14 @@ app.get('/campgrounds/new', function (req, res) {
 
 //CREATE -  Add new campground to DB
 app.post('/campgrounds', function (req, res) {
-    // get data from form and redirect to campgrounds array
+    // get data from form and redirect to campgrounds page
     let name = req.body.name;
     let image = req.body.image;
+    let desc = req.body.descripton;
     let newCampground = {
         name: name,
-        image: image
+        image: image,
+        description: desc
     }
     // Create a new Campground and add it to our db
     Campground.create(newCampground, function (err, newlyCreated) {
@@ -100,7 +102,7 @@ app.get("/campgrounds/:id", function (req, res) {
     // find the campground with a provided id
     Campground.findById(req.params.id, function (err, foundCampground) {
         if (err) {
-            console.log(err)
+            console.log(err);
         } else {
             // render the show page for that campground
             res.render('show', {campground: foundCampground});
