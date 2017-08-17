@@ -61,7 +61,9 @@ app.get('/campgrounds', function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render('index', { campgrounds: allCampgrounds });
+            res.render('index', {
+                campgrounds: allCampgrounds
+            });
         }
     })
 });
@@ -94,11 +96,16 @@ app.post('/campgrounds', function (req, res) {
 
 
 // SHOW - Show a more detailed description of a specified route (by :id
-app.get("/campgrounds/:id",function(req, res){
+app.get("/campgrounds/:id", function (req, res) {
     // find the campground with a provided id
-
-    // render the show page for that campground
-    res.send(show);
+    Campground.findById(req.params.id, function (err, foundCampground) {
+        if (err) {
+            console.log(err)
+        } else {
+            // render the show page for that campground
+            res.render('show', {campground: foundCampground});
+        }
+    });
 });
 
 
