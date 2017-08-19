@@ -1,7 +1,7 @@
 /* navbar BG color */
 nav.navbar.navbar-default {
-    /* background: linear-gradient(to left , #804CCD, #4B1D8D) !important;     */
-    background-color: #3E327C !important;
+    background: linear-gradient(to left , #5854C1, #3586FC) !important;    
+    /* background-color: #3E327C !important; */
 }
 
 /* navbar */

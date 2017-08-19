@@ -31,17 +31,17 @@ const campgroundSchema = new mongoose.Schema({
 const Campground = mongoose.model("Campground", campgroundSchema);
 
 // Create a new Campground and add it to our db
-// Campground.create({
-//     name: "FireSide Rock",
-//     image: "https://farm1.staticflickr.com/7/5954480_34a881115f.jpg",
-//     descripton: "This campground is known to have regular forest fires. Tread carefully, you have been Warned!"
-// }, function (err, newlyCreated) {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         console.log("success");
-//     }
-// });
+Campground.create({
+    name: "FireSide Rock",
+    image: "https://farm1.staticflickr.com/7/5954480_34a881115f.jpg",
+    descripton: "This campground is known to have regular forest fires. Tread carefully, you have been Warned!"
+}, function (err, newlyCreated) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("success");
+    }
+});
 
 
 
@@ -79,11 +79,11 @@ app.post('/campgrounds', function (req, res) {
     // get data from form and redirect to campgrounds page
     let name = req.body.name;
     let image = req.body.image;
-    let desc = req.body.descripton;
+    let description = req.body.descripton;
     let newCampground = {
         name: name,
         image: image,
-        description: desc
+        description: description
     }
     // Create a new Campground and add it to our db
     Campground.create(newCampground, function (err, newlyCreated) {
@@ -99,13 +99,15 @@ app.post('/campgrounds', function (req, res) {
 
 // SHOW - Show a more detailed description of a specified route (by :id
 app.get("/campgrounds/:id", function (req, res) {
-    // find the campground with a provided id
-    Campground.findById(req.params.id, function (err, foundCampground) {
+    // find the campground with the provided id
+    Campground.findById(req.params.id, function (err, campground) {
         if (err) {
             console.log(err);
         } else {
             // render the show page for that campground
-            res.render('show', {campground: foundCampground});
+            res.render('show', {
+                campground: campground
+            });
         }
     });
 });
@@ -120,3 +122,7 @@ app.get("/campgrounds/:id", function (req, res) {
 app.listen(process.env.PORT || 8080, function () {
     console.log('SUCCESS! visit PORT 8080');
 });
+
+
+
+
