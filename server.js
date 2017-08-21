@@ -25,7 +25,7 @@ app.use(express.static(process.cwd() + '/public'));
 const campgroundSchema = new mongoose.Schema({
     name: String,
     image: String,
-    descripton: String
+    description: String
 });
 
 const Campground = mongoose.model("Campground", campgroundSchema);
@@ -79,7 +79,7 @@ app.post('/campgrounds', function (req, res) {
     // get data from form and redirect to campgrounds page
     let name = req.body.name;
     let image = req.body.image;
-    let description = req.body.descripton;
+    let description = req.body.description;
     let newCampground = {
         name: name,
         image: image,
