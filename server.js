@@ -34,7 +34,7 @@ const Campground = mongoose.model("Campground", campgroundSchema);
 // Campground.create({
 //     name: "FireSide Rock",
 //     image: "https://farm1.staticflickr.com/7/5954480_34a881115f.jpg",
-//     descripton: "This campground is known to have regular forest fires. Tread carefully, you have been Warned!"
+//     description: "This campground is known to have regular forest fires. Tread carefully, you have been Warned!"
 // }, function (err, newlyCreated) {
 //     if (err) {
 //         console.log(err);
