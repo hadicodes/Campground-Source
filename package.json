@@ -1,7 +1,7 @@
 {
-  "name": "yelpcamp",
+  "name": "campgroundsource",
   "version": "1.0.0",
-  "description": "YelpCamp",
+  "description": "Campground Source is a webapp resource that gives you hand-picked campgrounds from all over the world.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
