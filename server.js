@@ -3,7 +3,8 @@ const express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
-    Campground = require("./models/campground");
+    Campground = require("./models/campground"),
+    seedDB = require("./seeds");
 
 // MONGOOSE CONNECTION
 mongoose.connect("mongodb://localhost/campground_source", {
