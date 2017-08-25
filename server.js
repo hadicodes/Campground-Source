@@ -6,6 +6,8 @@ const express = require("express"),
     Campground = require("./models/campground"),
     seedDB = require("./seeds");
 
+
+seedDB();
 // MONGOOSE CONNECTION
 mongoose.connect("mongodb://localhost/campground_source", {
     useMongoClient: true
