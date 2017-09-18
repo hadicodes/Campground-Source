@@ -7,6 +7,5 @@ const campgroundSchema = new mongoose.Schema({
     description: String
 });
 
-
 module.exports =  mongoose.model("Campground", campgroundSchema);
 

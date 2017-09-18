@@ -1,5 +1,6 @@
 const mongoose = require("mongoose"),
-    Campground = require("./models/campground");
+    Campground = require("./models/campground"),
+    Comment = require("./models/comment");
 
 var data = [{
         name: "Cloud's Rest",
@@ -26,9 +27,30 @@ function seedDB() {
             console.log(err);
         }
         console.log('removed campgrounds!');
+        // Adds in a few campgrounds
+        data.forEach(function (seed) {
+            Campground.create(seed, function (err, campground) {
+                if (err) {
+                    console.log("You have an ERROR!!!");
+                } else {
+                    console.log("Added a campground");
+                    // create a comment
+                    Comment.create({
+                        text: "This place is nice but it needs internet access.",
+                        author: "Andy"
+                    }, function (err, comment) {
+                        if (err) {
+                            console.log("You have an ERROR!!!");
+                        } else {
+                            campground.comments.push(comment);
+                            campground.save();
+                            console.log("Created new comment");
+                        }
+                    });
+                }
+            });
+        });
     });
-    // Adds in a few campgrounds
-    Cam
 }
 
 module.exports = seedDB;
