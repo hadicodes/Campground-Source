@@ -11,8 +11,6 @@ const express = require("express"),
 mongoose.connect("mongodb://localhost/campground_source", {
     useMongoClient: true
 });
-// Invokes the seedDb function to remove all campgrounds and then add a few
-seedDB();
 
 // MIDDLEWARE
 // Use body-parser
@@ -23,6 +21,8 @@ app.use(bodyParser.urlencoded({
 app.set("view engine", "ejs");
 // Serve static files from public directory
 app.use(express.static(process.cwd() + '/public'));
+// Invokes the seedDb function to remove all campgrounds and then add a few
+seedDB();
 
 
 
@@ -43,7 +43,7 @@ app.get('/campgrounds', function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render('index', {
+            res.render('campgrounds/index', {
                 campgrounds: allCampgrounds
             });
         }
@@ -53,7 +53,7 @@ app.get('/campgrounds', function (req, res) {
 
 //NEW - SHOW NEW CAMPGROUND FORM
 app.get('/campgrounds/new', function (req, res) {
-    res.render('new.ejs');
+    res.render('campgrounds/new');
 });
 
 //CREATE -  Add new campground to DB
@@ -88,7 +88,7 @@ app.get("/campgrounds/:id", function (req, res) {
         } else {
             // render the show page for that campground
             console.log(foundCampground);
-            res.render('show', {
+            res.render('campgrounds/show', {
                 campground: foundCampground
             });
         }
@@ -100,6 +100,14 @@ app.get("/campgrounds/:id", function (req, res) {
 
 
 
+//======================================================
+// COMMENTS ROUTES
+//======================================================
+
+// New Comments Form Route
+app.get("/campgrounds/:id/comments/new", function(req, res){
+    res.render('comments/new');
+});
 
 // Server Port Listener
 app.listen(process.env.PORT || 8080, function () {
