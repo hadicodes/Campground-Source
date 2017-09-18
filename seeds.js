@@ -12,9 +12,9 @@ var data = [{
         description: "Dry barren desert surrounds this campground."
     },
     {
-        name: "Cloud's Rest",
-        image: "https://farm8.staticflickr.com/7252/7626464792_3e68c2a6a5.jpg",
-        description: "A nice campground with soft ground near the clouds."
+        name: "Prairie Fields",
+        image: "https://farm6.staticflickr.com/5181/5641024448_04fefbb64d.jpg",
+        description: "This campground is filled with prairie."
     }
 ]
 
