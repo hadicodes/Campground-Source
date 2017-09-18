@@ -7,11 +7,12 @@ const express = require("express"),
     seedDB = require("./seeds");
 
 
-seedDB();
 // MONGOOSE CONNECTION
 mongoose.connect("mongodb://localhost/campground_source", {
     useMongoClient: true
 });
+// Invokes the seedDb function to remove all campgrounds and then add a few
+seedDB();
 
 // MIDDLEWARE
 // Use body-parser
@@ -23,22 +24,6 @@ app.set("view engine", "ejs");
 // Serve static files from public directory
 app.use(express.static(process.cwd() + '/public'));
 
-
-
-
-
-// Create a new Campground and add it to our db
-// Campground.create({
-//     name: "FireSide Rock",
-//     image: "https://farm1.staticflickr.com/7/5954480_34a881115f.jpg",
-//     description: "This campground is known to have regular forest fires. Tread carefully, you have been Warned!"
-// }, function (err, newlyCreated) {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         console.log("success");
-//     }
-// });
 
 
 
@@ -97,13 +82,14 @@ app.post('/campgrounds', function (req, res) {
 // SHOW - Show a more detailed description of a specified route (by :id
 app.get("/campgrounds/:id", function (req, res) {
     // find the campground with the provided id
-    Campground.findById(req.params.id, function (err, campground) {
+    Campground.findById(req.params.id).populate("comments").exec(function (err, foundCampground) {
         if (err) {
             console.log(err);
         } else {
             // render the show page for that campground
+            console.log(foundCampground);
             res.render('show', {
-                campground: campground
+                campground: foundCampground
             });
         }
     });
@@ -119,7 +105,3 @@ app.get("/campgrounds/:id", function (req, res) {
 app.listen(process.env.PORT || 8080, function () {
     console.log('SUCCESS! visit PORT 8080');
 });
-
-
-
-

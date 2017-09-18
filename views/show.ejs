@@ -10,6 +10,12 @@
         <%= campground.description %>
     </p>
 
+    <p>
+        <% campground.comments.forEach(function (comment){ %>
+            <strong><%= comment.author %></strong> - <%= comment.text %>
+       <% })  %>
+    </p>
+
     <% include partials/footer %>
 
 
