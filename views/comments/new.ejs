@@ -4,9 +4,9 @@
 <br>
 <div class="container">
     <div class="row">
-        <h1 style="text-align: center">Add a new comment to </h1>
+        <h1 style="text-align: center">Add a new comment to <%= campground.name %></h1>
         <div class="form-style">
-            <form action="/campgrounds/<%= campground._id %>/comments" method="GET">
+            <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
                 <div class="form-group">
                     <input class="form-control" type="text" name="name" placeholder="Name">
                 </div>

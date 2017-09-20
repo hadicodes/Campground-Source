@@ -105,8 +105,16 @@ app.get("/campgrounds/:id", function (req, res) {
 //======================================================
 
 // New Comments Form Route
-app.get("/campgrounds/:id/comments/new", function(req, res){
-    res.render('comments/new');
+app.get("/campgrounds/:id/comments/new", function (req, res) {
+    // find campground by id
+    Campground.findById(req.params.id, function (err, campground) {
+        if (err) {
+            console.log("You have an ERROR!!!");
+        } else {
+            res.render('comments/new', {campground: campground});
+        }
+    });
+
 });
 
 // Server Port Listener
