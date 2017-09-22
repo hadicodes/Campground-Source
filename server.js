@@ -35,7 +35,7 @@ seedDB();
 // Landing page route
 app.get('/', function (req, res) {
     res.render('landing');
-});
+}); 
 
 // INDEX - Show all campgrounds
 app.get('/campgrounds', function (req, res) {
