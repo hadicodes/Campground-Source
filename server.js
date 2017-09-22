@@ -4,6 +4,7 @@ const express = require("express"),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
     Campground = require("./models/campground"),
+    Comment = require("./models/comment"),
     seedDB = require("./seeds");
 
 
@@ -111,7 +112,9 @@ app.get("/campgrounds/:id/comments/new", function (req, res) {
         if (err) {
             console.log("You have an ERROR!!!");
         } else {
-            res.render('comments/new', {campground: campground});
+            res.render('comments/new', {
+                campground: campground
+            });
         }
     });
 
@@ -119,18 +122,20 @@ app.get("/campgrounds/:id/comments/new", function (req, res) {
 
 
 
-app.post('/campgrounds/:id/comments', function(req, res){
+app.post('/campgrounds/:id/comments', function (req, res) {
     // Lookup campground using id
-    Campground.findById(req.params.id, function(err, campground){
+    Campground.findById(req.params.id, function (err, campground) {
         if (err) {
-                console.log("You have an ERROR!!!");
-                res.redirect("/campgrounds");
+            console.log("You have an ERROR!!!");
+            res.redirect("/campgrounds");
         } else {
             console.log(req.body.comment);
-            Comment.create(req.body.comment, function(err, comment){
+            // create comment
+            Comment.create(req.body.comment, function (err, comment) {
                 if (err) {
-                        console.log("You have an ERROR!!!");
+                    console.log("You have an ERROR!!!");
                 } else {
+                    // connect new comment to campground
                     campground.comments.push(comment);
                     campground.save();
                     res.redirect("/campgrounds/" + campground._id);
@@ -138,9 +143,9 @@ app.post('/campgrounds/:id/comments', function(req, res){
             });
         }
     });
-    // create comment
 
-    // connect new comment to campground
+
+    
 
     // redirect to campground show page
 });
