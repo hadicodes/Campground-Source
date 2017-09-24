@@ -138,16 +138,12 @@ app.post('/campgrounds/:id/comments', function (req, res) {
                     // connect new comment to campground
                     campground.comments.push(comment);
                     campground.save();
+                    // redirect to campground show page
                     res.redirect("/campgrounds/" + campground._id);
                 }
             });
         }
     });
-
-
-    
-
-    // redirect to campground show page
 });
 
 
