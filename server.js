@@ -153,6 +153,6 @@ app.post('/campgrounds/:id/comments', function (req, res) {
 
 
 // Server Port Listener
-app.listen(process.env.PORT || 8080, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log('SUCCESS! visit PORT 8080');
 });
