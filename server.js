@@ -35,9 +35,9 @@ seedDB();
 app.use(require("express-session")({
     secret: "Rusty is the cutest dog",
     resave: false,
-    saveUninitialized: false
-
+    saveUninitialized: false    
 }));
+// In an Express-based application, passport.initialize() middleware is required to initialize Passport. If your application uses persistent login sessions, passport.session() middleware must also be used.
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -166,6 +166,16 @@ app.post('/campgrounds/:id/comments', function (req, res) {
         }
     });
 });
+
+
+
+//======================================================
+//AUTH Routes
+//======================================================
+app.get('/register', function (req, res) {
+    res.render("register");
+});
+
 
 
 
