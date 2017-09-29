@@ -3,7 +3,10 @@ const express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
+    passport = require("passport"),
+    LocalStrategy = require("passport-local"),
     Campground = require("./models/campground"),
+    User = require("./models/user"),
     Comment = require("./models/comment"),
     seedDB = require("./seeds");
 
@@ -35,7 +38,7 @@ seedDB();
 // Landing page route
 app.get('/', function (req, res) {
     res.render('landing');
-}); 
+});
 
 // INDEX - Show all campgrounds
 app.get('/campgrounds', function (req, res) {
