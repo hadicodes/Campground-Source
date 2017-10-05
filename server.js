@@ -170,7 +170,7 @@ app.post('/campgrounds/:id/comments', function (req, res) {
 
 
 //======================================================
-//AUTH Routes
+//AUTH ROUTES
 //======================================================
 app.get('/register', function (req, res) {
     res.render("register");
@@ -182,8 +182,9 @@ app.get('/register', function (req, res) {
 
 
 
-
 // Server Port Listener
 app.listen(process.env.PORT || 3000, function () {
     console.log('SUCCESS! visit PORT 8080');
 });
+
+
