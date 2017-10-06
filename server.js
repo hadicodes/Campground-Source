@@ -191,6 +191,9 @@ app.get("/register", function(req, res){
      });
  });
 
+ app.get('/login', function (req, res) {
+	res.render("login");
+});
 
 
 // Server Port Listener
