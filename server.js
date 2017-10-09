@@ -200,6 +200,7 @@ app.get("/register", function(req, res){
 //Handle Login Logic 
 app.post('/login', function (req, res) {
     //authenticate user and session and login 
+    res.send("Login post works");
 });
 
 // Server Port Listener
