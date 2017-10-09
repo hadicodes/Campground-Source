@@ -191,10 +191,16 @@ app.get("/register", function(req, res){
      });
  });
 
+
+ //  LOGIN ROUTE
  app.get('/login', function (req, res) {
 	res.render("login");
 });
 
+//Handle Login Logic 
+app.post('/login', function (req, res) {
+    //authenticate user and session and login 
+});
 
 // Server Port Listener
 app.listen(process.env.PORT || 3000, function () {
