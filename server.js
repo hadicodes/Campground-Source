@@ -174,34 +174,36 @@ app.post('/campgrounds/:id/comments', function (req, res) {
 //======================================================
 
 // show register form
-app.get("/register", function(req, res){
-    res.render("register"); 
- });
- //handle sign up logic
- app.post("/register", function(req, res){
-     var newUser = new User({username: req.body.username});
-     User.register(newUser, req.body.password, function(err, user){
-         if(err){
-             console.log(err);
-             return res.render("register");
-         }
-         passport.authenticate("local")(req, res, function(){
-            res.redirect("/campgrounds"); 
-         });
-     });
- });
+app.get("/register", function (req, res) {
+    res.render("register");
+});
+//handle sign up logic
+app.post("/register", function (req, res) {
+    var newUser = new User({
+        username: req.body.username
+    });
+    User.register(newUser, req.body.password, function (err, user) {
+        if (err) {
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function () {
+            res.redirect("/campgrounds");
+        });
+    });
+});
 
 
- //  LOGIN ROUTE
- app.get('/login', function (req, res) {
-	res.render("login");
+//  LOGIN ROUTE
+app.get('/login', function (req, res) {
+    res.render("login");
 });
 
 //Handle Login Logic 
-app.post('/login', function (req, res) {
-    //authenticate user and session and login 
-    res.send("Login post works");
-});
+app.post('/login', passport.authenticate("local", {
+    successRedirect: "/campgrounds",
+    failureRedirect: "/login"
+}), function (req, res) {});
 
 // Server Port Listener
 app.listen(process.env.PORT || 3000, function () {
