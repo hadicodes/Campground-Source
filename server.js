@@ -205,6 +205,13 @@ app.post('/login', passport.authenticate("local", {
     failureRedirect: "/login"
 }), function (req, res) {});
 
+
+// LOGOUT ROUTE
+app.get('/logout', function (req, res) {
+	res.render("logout");
+});
+
+
 // Server Port Listener
 app.listen(process.env.PORT || 3000, function () {
     console.log('SUCCESS! visit PORT 8080');
