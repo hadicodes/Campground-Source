@@ -208,7 +208,7 @@ app.post('/login', passport.authenticate("local", {
 
 // LOGOUT ROUTE
 app.get('/logout', function (req, res) {
-	res.render("logout");
+    req.logOut("/campgrounds");
 });
 
 
