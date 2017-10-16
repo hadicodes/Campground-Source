@@ -212,6 +212,25 @@ app.get('/logout', function (req, res) {
 });
 
 
+// Middleware for isLoggedin
+function  isLoggedin(req, res, next {
+    if (req.isAuthenticated()) {
+        
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Server Port Listener
 app.listen(process.env.PORT || 3000, function () {
     console.log('SUCCESS! visit PORT 8080');
