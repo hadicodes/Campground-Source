@@ -213,16 +213,12 @@ app.get('/logout', function (req, res) {
 
 
 // Middleware for isLoggedin
-function  isLoggedin(req, res, next {
-    if (req.isAuthenticated()) {
-        
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
     }
-})
-
-
-
-
-
+    res.redirect("/login");
+}
 
 
 
