@@ -43,6 +43,10 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+app.use(function (req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 
 
@@ -66,8 +70,7 @@ app.get('/campgrounds', function (req, res) {
             console.log(err);
         } else {
             res.render('campgrounds/index', {
-                campgrounds: allCampgrounds,
-                currentUser: req.user
+                campgrounds: allCampgrounds
             });
         }
     })
@@ -207,9 +210,11 @@ app.post('/login', passport.authenticate("local", {
 
 
 // LOGOUT ROUTE
-app.get('/logout', function (req, res) {
-    req.logOut("/campgrounds");
-});
+app.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/campgrounds");
+ });
+ 
 
 
 // Middleware for checking isLoggedin
