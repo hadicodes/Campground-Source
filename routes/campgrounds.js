@@ -1,3 +1,7 @@
+const express = require("express"),
+router        = express.Router();
+
+
 // INDEX - Show all campgrounds
 app.get('/campgrounds', function (req, res) {
     // get all campgrounds from db
@@ -57,3 +61,6 @@ app.get("/campgrounds/:id", function (req, res) {
         }
     });
 });
+
+
+module.exports = router;

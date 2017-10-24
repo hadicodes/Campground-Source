@@ -32,6 +32,9 @@ app.post("/register", function (req, res) {
     });
 });
 
+const express = require("express"),
+router        = express.Router();
+
 
 //  LOGIN ROUTE
 app.get('/login', function (req, res) {
