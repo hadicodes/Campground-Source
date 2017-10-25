@@ -6,7 +6,7 @@ router        = express.Router();
 //======================================================
 
 // Show New Comments Form Route
-app.get("/campgrounds/:id/comments/new", isLoggedIn, function (req, res) {
+router.get("/campgrounds/:id/comments/new", isLoggedIn, function (req, res) {
     // find campground by id
     Campground.findById(req.params.id, function (err, campground) {
         if (err) {
@@ -21,7 +21,7 @@ app.get("/campgrounds/:id/comments/new", isLoggedIn, function (req, res) {
 
 
 // POST Comments Route 
-app.post('/campgrounds/:id/comments', isLoggedIn, function (req, res) {
+router.post('/campgrounds/:id/comments', isLoggedIn, function (req, res) {
     // Lookup campground using id
     Campground.findById(req.params.id, function (err, campground) {
         if (err) {
@@ -44,3 +44,6 @@ app.post('/campgrounds/:id/comments', isLoggedIn, function (req, res) {
         }
     });
 });
+
+
+module.exports = router;

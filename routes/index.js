@@ -1,9 +1,13 @@
+const express = require("express"),
+router        = express.Router();
+
+
 // ****************************************************************************************
 // ROUTES
 // ****************************************************************************************
 
 // Landing page route
-app.get('/', function (req, res) {
+router.get('/', function (req, res) {
     res.render('landing');
 });
 
@@ -13,11 +17,11 @@ app.get('/', function (req, res) {
 //======================================================
 
 // show register form
-app.get("/register", function (req, res) {
+router.get("/register", function (req, res) {
     res.render("register");
 });
 //handle sign up logic
-app.post("/register", function (req, res) {
+router.post("/register", function (req, res) {
     var newUser = new User({
         username: req.body.username
     });
@@ -37,19 +41,19 @@ router        = express.Router();
 
 
 //  LOGIN ROUTE
-app.get('/login', function (req, res) {
+router.get('/login', function (req, res) {
     res.render("login");
 });
 
 // Handle Login Logic 
-app.post('/login', passport.authenticate("local", {
+router.post('/login', passport.authenticate("local", {
     successRedirect: "/campgrounds",
     failureRedirect: "/login"
 }), function (req, res) {});
 
 
 // LOGOUT ROUTE
-app.get("/logout", function(req, res){
+router.get("/logout", function(req, res){
     req.logout();
     res.redirect("/campgrounds");
  });
@@ -62,3 +66,6 @@ function isLoggedIn(req, res, next) {
     }
     res.redirect("/login");
 }
+
+
+module.exports = router;
