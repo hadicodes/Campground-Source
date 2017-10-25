@@ -3,7 +3,7 @@ router        = express.Router();
 
 
 // INDEX - Show all campgrounds
-app.get('/campgrounds', function (req, res) {
+router.get('/campgrounds', function (req, res) {
     // get all campgrounds from db
     Campground.find({}, function (err, allCampgrounds) {
         if (err) {
@@ -18,13 +18,13 @@ app.get('/campgrounds', function (req, res) {
 
 
 //NEW - SHOW NEW CAMPGROUND FORM
-app.get('/campgrounds/new', function (req, res) {
+router.get('/campgrounds/new', function (req, res) {
     res.render('campgrounds/new');
 });
 
 
 //CREATE -  Add new campground to DB
-app.post('/campgrounds', function (req, res) {
+router.post('/campgrounds', function (req, res) {
     // get data from form and redirect to campgrounds page
     let name = req.body.name;
     let image = req.body.image;
@@ -47,7 +47,7 @@ app.post('/campgrounds', function (req, res) {
 
 
 // SHOW - Show a more detailed description of a specified route (by :id
-app.get("/campgrounds/:id", function (req, res) {
+router.get("/campgrounds/:id", function (req, res) {
     // find the campground with the provided id
     Campground.findById(req.params.id).populate("comments").exec(function (err, foundCampground) {
         if (err) {
