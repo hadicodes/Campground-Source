@@ -1,5 +1,6 @@
 const express = require("express"),
-router        = express.Router();
+router        = express.Router(),
+Campground    = require("../models/campground");
 
 
 // INDEX - Show all campgrounds
