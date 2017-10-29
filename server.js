@@ -10,9 +10,10 @@ const express = require("express"),
     Comment = require("./models/comment"),
     seedDB = require("./seeds");
 
-    const campgroundRoutes = ("./routes/comments.js"),
-          commentRoutes = ("./routes/comments.js"),
-          indexRoutes = ("./routes/comments.js");
+//requring routes
+const commentRoutes    = require("./routes/comments"),
+campgroundRoutes = require("./routes/campgrounds"),
+indexRoutes      = require("./routes/index");
 
 
 // MONGOOSE CONNECTION

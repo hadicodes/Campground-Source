@@ -38,8 +38,6 @@ router.post("/register", function (req, res) {
     });
 });
 
-const express = require("express"),
-router        = express.Router();
 
 
 //  LOGIN ROUTE
